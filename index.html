@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WellnessTrack Pro - Your Office Fitness Coach</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Floating fitness terms background -->
+    <div id="terms-container"></div>
+    
+    <!-- Auth Container -->
+    <div id="auth-container" class="auth-container fade-in">
+        <div class="auth-card">
+            <div class="auth-header">
+                <h2>WellnessTrack Pro</h2>
+                <p>Transform your office wellness journey</p>
+            </div>
+            
+            <!-- Login Form -->
+            <div id="login-form" class="auth-form">
+                <h3 style="color: #667eea; margin-bottom: 30px; text-align: center; font-size: 1.4rem;">Sign In to Your Account</h3>
+                <form id="login-form-element">
+                    <div class="form-group">
+                        <label for="login-email">Email Address</label>
+                        <input type="email" id="login-email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="login-password">Password</label>
+                        <input type="password" id="login-password" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Sign In</button>
+                </form>
+                <div class="toggle-form">
+                    <p>Don't have an account? <a id="show-signup">Create one here</a></p>
+                    <p style="margin-top: 15px; font-size: 0.9rem; color: #10b981;">Demo: demo@company.com / demo123</p>
+                </div>
+            </div>
+            
+            <!-- Signup Form -->
+            <div id="signup-form" class="auth-form" style="display: none;">
+                <h3 style="color: #667eea; margin-bottom: 30px; text-align: center; font-size: 1.4rem;">Create Your Wellness Account</h3>
+                <form id="signup-form-element">
+                    <div class="form-group">
+                        <label for="signup-name">Full Name</label>
+                        <input type="text" id="signup-name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="signup-email">Email Address</label>
+                        <input type="email" id="signup-email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="signup-password">Password</label>
+                        <input type="password" id="signup-password" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="signup-department">Department</label>
+                        <input type="text" id="signup-department" placeholder="e.g. Marketing, IT, Sales" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Create Account</button>
+                </form>
+                <div class="toggle-form">
+                    <p>Already have an account? <a id="show-login">Sign in here</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Dashboard -->
+    <div id="dashboard" class="dashboard">
+        <!-- Mobile Menu Toggle -->
+        <button id="mobile-menu-toggle" class="mobile-menu-toggle">☰</button>
+        
+        <!-- Sidebar -->
+        <div class="sidebar" id="sidebar">
+            <div class="sidebar-brand">
+                <h1>WellnessTrack Pro</h1>
+                <p>Your Personal Office Fitness Coach</p>
+            </div>
+            <ul class="sidebar-nav">
+                <li data-page="daily-checkin" class="nav-item active">
+                    🏃‍♂️ Daily Check-in
+                </li>
+                <li data-page="activity-tracking" class="nav-item">
+                    📊 Activity Tracking
+                </li>
+                <li data-page="hydration-monitoring" class="nav-item">
+                    💧 Hydration Monitoring
+                </li>
+                <li data-page="sleep-assessment" class="nav-item">
+                    😴 Sleep Assessment
+                </li>
+                <li data-page="energy-analysis" class="nav-item">
+                    ⚡ Energy Analysis
+                </li>
+                <li data-page="personalized-goals" class="nav-item">
+                    🎯 Personalized Goals
+                </li>
+                <!-- <li data-page="progress-analytics" class="nav-item">
+                    📈 Progress Analytics
+                </li> -->
+            </ul>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Daily Check-in Page -->
+            <div id="daily-checkin" class="page-section active">
+                <div class="page-header">
+                    <div class="page-title">Daily Wellness Check-in</div>
+                    <div class="page-subtitle">Track your daily wellness metrics with our guided assessment</div>
+                </div> 
+                <div class="page-content">
+                    <div class="step-form-card">
+                        <!-- Step Indicator -->
+                        <div class="step-indicator">
+                            <div class="step-item active" data-step="1">
+                                <div class="step-number">1</div>
+                                <div class="step-title">Activity</div>
+                            </div>
+                            <div class="step-item" data-step="2">
+                                <div class="step-number">2</div>
+                                <div class="step-title">Sleep</div>
+                            </div>
+                            <div class="step-item" data-step="3">
+                                <div class="step-number">3</div>
+                                <div class="step-title">Hydration</div>
+                            </div>
+                            <div class="step-item" data-step="4">
+                                <div class="step-number">4</div>
+                                <div class="step-title">Energy</div>
+                            </div>
+                            <div class="step-item" data-step="5">
+                                <div class="step-number">5</div>
+                                <div class="step-title">Review</div>
+                            </div>
+                        </div>
+
+                        <!-- Step 1: Physical Activity -->
+                        <div class="step-content active" id="step-1">
+                            <!-- <div class="question-card">
+                                <div class="question-icon">🏃‍♂️</div>
+                                <div class="question-title">Physical Activity</div>
+                                <div class="question-subtitle">How active were you today?</div>
+                            </div> -->
+                            
+                            <div style="margin-bottom: 30px;">
+                                <div style="margin-bottom: 25px;">
+                                    <label style="display: block; margin-bottom: 12px; font-weight: 600; color: #374151; font-size: 1.1rem;">Steps taken today</label>
+                                    <div class="input-group">
+                                        <input type="number" class="input-large" id="daily-steps" min="0" placeholder="8000">
+                                        <span class="input-unit">steps</span>
+                                    </div>
+                                </div>
+                                
+                                <div>
+                                    <label style="display: block; margin-bottom: 12px; font-weight: 600; color: #374151; font-size: 1.1rem;">Calories burned</label>
+                                    <div class="input-group">
+                                        <input type="number" class="input-large" id="daily-calories" min="0" placeholder="2200">
+                                        <span class="input-unit">calories</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Step 2: Sleep -->
+                        <div class="step-content" id="step-2">
+                            <!-- <div class="question-card">
+                                <div class="question-icon">😴</div>
+                                <div class="question-title">Sleep Quality</div>
+                                <div class="question-subtitle">How well did you rest last night?</div>
+                            </div> -->
+                            
+                            <div style="margin-bottom: 30px;">
+                                <label style="display: block; margin-bottom: 12px; font-weight: 600; color: #374151; font-size: 1.1rem;">Hours of sleep</label>
+                                <div class="input-group">
+                                    <input type="number" class="input-large" id="daily-sleep" min="0" max="24" step="0.5" placeholder="7.5">
+                                    <span class="input-unit">hours</span>
+                                </div>
+                            </div>
+                            <div class="rating-container">
+                                <label class="rating-label">Rate your sleep quality</label>
+                                <div class="rating-stars" data-rating="sleep-quality">
+                                    <span class="star" data-value="1">★</span>
+                                    <span class="star" data-value="2">★</span>
+                                    <span class="star" data-value="3">★</span>
+                                    <span class="star" data-value="4">★</span>
+                                    <span class="star" data-value="5">★</span>
+                                </div>
+                                <div class="rating-description" id="sleep-quality-rating-desc">Click stars to rate your sleep quality</div>
+                            </div>
+                        </div>
+
+                        <!-- Step 3: Hydration -->
+                        <div class="step-content" id="step-3">
+                            <!-- <div class="question-card">
+                                <div class="question-icon">💧</div>
+                                <div class="question-title">Hydration</div>
+                                <div class="question-subtitle">How much water did you drink today?</div>
+                            </div> -->
+                            
+                            <div style="margin-bottom: 30px;">
+                                <label style="display: block; margin-bottom: 12px; font-weight: 600; color: #374151; font-size: 1.1rem;">Water intake</label>
+                                <div class="input-group">
+                                    <input type="number" class="input-large" id="daily-water" min="0" step="0.1" placeholder="2.5">
+                                    <span class="input-unit">liters</span>
+                                </div>
+                            </div>
+                            <div class="rating-container">
+                                <label class="rating-label">Rate your hydration level</label>
+                                <div class="rating-stars" data-rating="hydration-level">
+                                    <span class="star" data-value="1">★</span>
+                                    <span class="star" data-value="2">★</span>
+                                    <span class="star" data-value="3">★</span>
+                                    <span class="star" data-value="4">★</span>
+                                    <span class="star" data-value="5">★</span>
+                                </div>
+                                <div class="rating-description" id="hydration-level-rating-desc">Click stars to rate how hydrated you feel</div>
+                            </div>
+                        </div>
+
+                        <!-- Step 4: Energy Level -->
+                        <div class="step-content" id="step-4">
+                            <!-- <div class="question-card">
+                                <div class="question-icon">⚡</div>
+                                <div class="question-title">Energy Level</div>
+                                <div class="question-subtitle">How energetic do you feel today?</div>
+                            </div> -->
+                            
+                            <div class="rating-container">
+                                <label class="rating-label">Rate your overall energy level</label>
+                                <div class="rating-stars" data-rating="energy-level">
+                                    <span class="star" data-value="1">★</span>
+                                    <span class="star" data-value="2">★</span>
+                                    <span class="star" data-value="3">★</span>
+                                    <span class="star" data-value="4">★</span>
+                                    <span class="star" data-value="5">★</span>
+                                </div>
+                                <div class="rating-description" id="energy-level-rating-desc">Click stars to rate your energy level</div>
+                            </div>
+                        </div>
+
+                        <!-- Step 5: Summary -->
+                        <div class="step-content" id="step-5">
+                            <!-- <div class="question-card">
+                                <div class="question-icon">✅</div>
+                                <div class="question-title">Ready to Submit</div>
+                                <div class="question-subtitle">Review your wellness data</div>
+                            </div> -->
+                            
+                            <div id="review-data" style="background: #f8fafc; padding: 30px; border-radius: 16px; margin-bottom: 30px; border: 1px solid #e5e7eb;">
+                                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px;">
+                                    <div style="text-align: center;">
+                                        <div style="font-size: 2rem; font-weight: 700; color: #10b981;" id="review-steps">--</div>
+                                        <div style="color: #6b7280; font-weight: 600;">Steps</div>
+                                    </div>
+                                    <div style="text-align: center;">
+                                        <div style="font-size: 2rem; font-weight: 700; color: #10b981;" id="review-calories">--</div>
+                                        <div style="color: #6b7280; font-weight: 600;">Calories</div>
+                                    </div>
+                                    <div style="text-align: center;">
+                                        <div style="font-size: 2rem; font-weight: 700; color: #10b981;" id="review-sleep">--</div>
+                                        <div style="color: #6b7280; font-weight: 600;">Sleep (hrs)</div>
+                                    </div>
+                                    <div style="text-align: center;">
+                                        <div style="font-size: 2rem; font-weight: 700; color: #10b981;" id="review-water">--</div>
+                                        <div style="color: #6b7280; font-weight: 600;">Water (L)</div>
+                                    </div>
+                                </div>
+                                
+                                <div style="margin-top: 25px; padding-top: 25px; border-top: 1px solid #e5e7eb;">
+                                    <h4 style="text-align: center; margin-bottom: 15px; color: #374151;">Your Ratings</h4>
+                                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 15px;">
+                                        <div style="text-align: center;">
+                                            <div style="color: #fbbf24; font-size: 1.5rem;" id="review-sleep-rating">--</div>
+                                            <div style="color: #6b7280; font-size: 0.9rem;">Sleep Quality</div>
+                                        </div>
+                                        <div style="text-align: center;">
+                                            <div style="color: #fbbf24; font-size: 1.5rem;" id="review-hydration-rating">--</div>
+                                            <div style="color: #6b7280; font-size: 0.9rem;">Hydration</div>
+                                        </div>
+                                        <div style="text-align: center;">
+                                            <div style="color: #fbbf24; font-size: 1.5rem;" id="review-energy-rating">--</div>
+                                            <div style="color: #6b7280; font-size: 0.9rem;">Energy Level</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="step-buttons">
+                            <button type="button" class="btn-secondary" id="prev-btn" style="display: none;">Previous</button>
+                            <button type="button" class="btn-success" id="next-btn">Next</button>
+                            <button type="button" class="btn-success" id="submit-btn" style="display: none;">Submit Check-in</button>
+                        </div>
+                    </div>
+
+                    <!-- Results Summary -->
+                    <div class="results-summary" id="results-summary" style="display: none;">
+                        <div class="energy-score-display" id="energy-score">95%</div>
+                        <div class="energy-description" id="energy-description">Excellent! You're crushing your wellness goals! 🔥</div>
+                        
+                        <div class="metrics-summary">
+                            <div class="metric-summary">
+                                <div class="metric-value" id="final-steps">--</div>
+                                <div class="metric-label">Steps</div>
+                            </div>
+                            <div class="metric-summary">
+                                <div class="metric-value" id="final-calories">--</div>
+                                <div class="metric-label">Calories</div>
+                            </div>
+                            <div class="metric-summary">
+                                <div class="metric-value" id="final-sleep">--</div>
+                                <div class="metric-label">Sleep (hrs)</div>
+                            </div>
+                            <div class="metric-summary">
+                                <div class="metric-value" id="final-water">--</div>
+                                <div class="metric-label">Water (L)</div>
+                            </div>
+                        </div>
+                        
+                        <div style="margin-top: 30px; padding-top: 30px; border-top: 1px solid rgba(255,255,255,0.2);">
+                            <h4 style="margin-bottom: 20px; font-size: 1.2rem;">Your Ratings Summary</h4>
+                            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 20px;">
+                                <div style="text-align: center;">
+                                    <div style="font-size: 1.8rem; margin-bottom: 5px;" id="final-sleep-rating">--</div>
+                                    <div style="opacity: 0.9; font-size: 0.95rem;">Sleep Quality</div>
+                                </div>
+                                <div style="text-align: center;">
+                                    <div style="font-size: 1.8rem; margin-bottom: 5px;" id="final-hydration-rating">--</div>
+                                    <div style="opacity: 0.9; font-size: 0.95rem;">Hydration</div>
+                                </div>
+                                <div style="text-align: center;">
+                                    <div style="font-size: 1.8rem; margin-bottom: 5px;" id="final-energy-rating">--</div>
+                                    <div style="opacity: 0.9; font-size: 0.95rem;">Energy Level</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <button class="btn btn-primary" id="new-checkin-btn" style="margin-top: 30px; width: auto; padding: 12px 30px;">
+                            New Check-in
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Activity Tracking Page -->
+            <div id="activity-tracking" class="page-section">
+                <div class="page-header">
+                    <div class="page-title">Activity Tracking</div>
+                    <div class="page-subtitle">Monitor your daily physical activities and movement patterns</div>
+                </div>
+                <div class="page-content">
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-number" id="avg-steps">--</div>
+                            <div class="stat-label">Average Daily Steps</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number" id="total-calories">--</div>
+                            <div class="stat-label">Total Calories This Week</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number" id="active-days">--</div>
+                            <div class="stat-label">Active Days This Month</div>
+                        </div>
+                    </div>
+                    <div class="chart-container">
+                        <h3 style="color: #10b981; margin-bottom: 20px; font-size: 1.5rem; font-weight: 700;">Weekly Activity Overview</h3>
+                        <div class="chart-content" id="activity-chart">
+                            <div class="chart-placeholder">
+                                Complete your daily check-ins to see activity trends and detailed analytics
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hydration Monitoring Page -->
+            <div id="hydration-monitoring" class="page-section">
+                <div class="page-header">
+                    <div class="page-title">Hydration Monitoring</div>
+                    <div class="page-subtitle">Track your water intake and maintain optimal hydration levels</div>
+                </div>
+                <div class="page-content">
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-number" id="avg-water">--</div>
+                            <div class="stat-label">Average Daily Water (L)</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number">2.5L</div>
+                            <div class="stat-label">Daily Hydration Goal</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number" id="hydration-streak">--</div>
+                            <div class="stat-label">Goal Achievement Streak</div>
+                        </div>
+                    </div>
+                    <div class="chart-container">
+                        <h3 style="color: #10b981; margin-bottom: 20px; font-size: 1.5rem; font-weight: 700;">Hydration Tracking</h3>
+                        <div class="chart-content" id="hydration-chart">
+                            <div class="chart-placeholder">
+                                Complete your daily check-ins to see hydration trends and patterns
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sleep Assessment Page -->
+            <div id="sleep-assessment" class="page-section">
+                <div class="page-header">
+                    <div class="page-title">Sleep Assessment</div>
+                    <div class="page-subtitle">Analyze your sleep patterns and quality for better rest</div>
+                </div>
+                <div class="page-content">
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-number" id="avg-sleep">--</div>
+                            <div class="stat-label">Average Sleep Hours</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number" id="sleep-quality">--</div>
+                            <div class="stat-label">Sleep Quality Score</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number" id="sleep-consistency">--</div>
+                            <div class="stat-label">Sleep Consistency</div>
+                        </div>
+                    </div>
+                    <div class="chart-container">
+                        <h3 style="color: #10b981; margin-bottom: 20px; font-size: 1.5rem; font-weight: 700;">Sleep Pattern Analysis</h3>
+                        <div class="chart-content" id="sleep-chart">
+                            <div class="chart-placeholder">
+                                Complete your daily check-ins to see detailed sleep analysis and recommendations
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Energy Analysis Page -->
+            <div id="energy-analysis" class="page-section">
+                <div class="page-header">
+                    <div class="page-title">Energy Analysis</div>
+                    <div class="page-subtitle">Understand your energy patterns and optimization opportunities</div>
+                </div>
+                <div class="page-content">
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-number" id="avg-energy">--</div>
+                            <div class="stat-label">Average Energy Score</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number" id="peak-energy">--</div>
+                            <div class="stat-label">Peak Energy Day</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number" id="energy-trend">--</div>
+                            <div class="stat-label">Weekly Trend</div>
+                        </div>
+                    </div>
+                    <div class="chart-container">
+                        <h3 style="color: #10b981; margin-bottom: 20px; font-size: 1.5rem; font-weight: 700;">Energy Level Trends</h3>
+                        <div class="chart-content" id="energy-chart">
+                            <div class="chart-placeholder">
+                                Complete your daily check-ins to see energy analysis and optimization suggestions
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Personalized Goals Page -->
+            <div id="personalized-goals" class="page-section">
+                <div class="page-header">
+                    <div class="page-title">Personalized Goals</div>
+                    <div class="page-subtitle">Set and track your custom wellness objectives</div>
+                </div>
+                <div class="page-content">
+                    <div style="background: white; border-radius: 24px; padding: 40px; box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1); margin-top: 30px;">
+                        <h3 style="color: #10b981; margin-bottom: 20px; font-size: 1.5rem; font-weight: 700; text-align: center;">Achievements & Milestones</h3>
+                        <div id="achievements" style="text-align: center; color: #6b7280; padding: 40px; font-size: 1.1rem;">
+                            Complete your daily check-ins to unlock achievements! 🏆
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Logout Button -->
+        <button class="logout-btn" id="logout-btn">Logout</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
+<h3 style="color: #10b981; margin-bottom: 30px; font-size: 1.8rem; font-weight: 700; text-align: center;">Your Wellness Goals</h3>
+                        
+                        <div style="display: grid; gap: 20px;">
+                            <div class="goal-item">
+                                <div class="goal-text">
+                                    <div class="goal-title">Daily Steps Goal</div>
+                                    <div class="goal-target">Target: 10,000 steps/day</div>
+                                </div>
+                                <div class="goal-progress-bar">
+                                    <div class="goal-progress-fill" id="steps-goal-progress"></div>
+                                </div>
+                            </div>
+                            
+                            <div class="goal-item">
+                                <div class="goal-text">
+                                    <div class="goal-title">Hydration Goal</div>
+                                    <div class="goal-target">Target: 2.5L water/day</div>
+                                </div>
+                                <div class="goal-progress-bar">
+                                    <div class="goal-progress-fill" id="water-goal-progress"></div>
+                                </div>
+                            </div>
+                            
+                            <div class="goal-item">
+                                <div class="goal-text">
+                                    <div class="goal-title">Sleep Goal</div>
+                                    <div class="goal-target">Target: 7-9 hours/night</div>
+                                </div>
+                                <div class="goal-progress-bar">
+                                    <div class="goal-progress-fill" id="sleep-goal-progress"></div>
+                                </div>
+                            </div>
+                            
+                            <div class="goal-item">
+                                <div class="goal-text">
+                                    <div class="goal-title">Calorie Burn Goal</div>
+                                    <div class="goal-target">Target: 500-700 cal/day</div>
+                                </div>
+                                <div class="goal-progress-bar">
+                                    <div class="goal-progress-fill" id="calories-goal-progress"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Progress Analytics Page -->
+            <div id="progress-analytics" class="page-section">
+                <div class="page-header">
+                    <div class="page-title">Progress Analytics</div>
+                    <div class="page-subtitle">Comprehensive analysis of your wellness journey</div>
+                </div>
+                <div class="page-content">
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-number" id="total-checkins">--</div>
+                            <div class="stat-label">Total Check-ins</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number" id="current-streak">--</div>
+                            <div class="stat-label">Current Streak</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number" id="overall-score">--</div>
+                            <div class="stat-label">Overall Wellness Score</div>
+                        </div>
+                    </div>
+                    <div class="chart-container">
+                        <h3 style="color: #10b981; margin-bottom: 20px; font-size: 1.5rem; font-weight: 700;">Wellness Progress Over Time</h3>
+                        <div class="chart-content" id="analytics-chart">
+                            <div class="chart-placeholder">
+                                Complete your daily check-ins to see comprehensive progress analytics and insights
+                            </div>
+                        </div>
+                    </div>
+                        
